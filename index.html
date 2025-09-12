@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- MEJORA SEO 1: Título optimizado -->
     <title>Nombres Mágicos | Generador de Nombres Creativos Gratis</title>
-    <!-- MEJORA SEO 2: Descripción para Google -->
     <meta name="description" content="¿Necesitas un nombre único? Nombres Mágicos es tu generador gratuito de nombres para fantasía, empresas, usuarios y más. ¡Encuentra el nombre perfecto al instante!">
-    <!-- MEJORA SEO 3: Palabras clave -->
     <meta name="keywords" content="generador de nombres, nombres de fantasia, nombres para empresas, nombres de usuario, nombres creativos, generador de nombres gratis, ideas de nombres">
     
+    <!--
+    ===========================================================
+    == TU CÓDIGO DE GOOGLE ADSENSE ==
+    == ¡Listo! Tu código personal ha sido añadido. ==
+    ===========================================================
+    -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5848149458078862"
+     crossorigin="anonymous"></script>
+    <!-- Fin del código de AdSense -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -68,7 +75,6 @@
             </div>
         </main>
         
-        <!-- MEJORA SEO 4: Contenido adicional para Google -->
         <footer class="text-center mt-8 text-gray-400 text-sm">
             <p>"Nombres Mágicos" es una herramienta gratuita para encontrar ideas de nombres al instante. Perfecta para escritores, emprendedores, jugadores y creadores de contenido que buscan un nombre único y memorable.</p>
         </footer>
@@ -79,24 +85,11 @@
         const categorySelect = document.getElementById('category');
         const resultsDiv = document.getElementById('results');
 
-        // --- Base de Datos de Nombres ---
         const nameParts = {
-            fantasy: {
-                prefijos: ["El", "Al", "Zar", "Fae", "Gael", "Bael", "Cael", "Drae", "Aer", "Ithil"],
-                sufijos: ["dor", "ion", "wyn", "thor", "ia", "lyn", "gard", "morn", "fyr", "thas"]
-            },
-            business: {
-                prefijos: ["Apex", "Zenith", "Quantum", "Nexus", "Vision", "Core", "Synergy", "Innovate", "NextGen", "Bright"],
-                sufijos: [" Solutions", " Dynamics", " Labs", " Works", " Co", " Group", " Ventures", " Tech", " Systems", " Link"]
-            },
-            username: {
-                prefijos: ["Shadow", "Cyber", "Zero", "Pixel", "Cosmic", "Neon", "Quantum", "Void", "Glitch", "Echo"],
-                sufijos: ["Hunter", "Byte", "Specter", "Warden", "Rider", "Pilot", "Neko", "Pulse", "Drifter", "Jolt"]
-            },
-            scifi: {
-                prefijos: ["Andro", "Cy-", "Xylo", "Zeta", "Galacto", "Nebul", "Quasar", "Vex", "Astro", "Terra"],
-                sufijos: ["meda", "nix", "corp", "dron", "flux", "nova", "prime", "tech", "dyne", "sphere"]
-            }
+            fantasy: { prefijos: ["El", "Al", "Zar", "Fae", "Gael", "Bael", "Cael", "Drae", "Aer", "Ithil"], sufijos: ["dor", "ion", "wyn", "thor", "ia", "lyn", "gard", "morn", "fyr", "thas"] },
+            business: { prefijos: ["Apex", "Zenith", "Quantum", "Nexus", "Vision", "Core", "Synergy", "Innovate", "NextGen", "Bright"], sufijos: [" Solutions", " Dynamics", " Labs", " Works", " Co", " Group", " Ventures", " Tech", " Systems", " Link"] },
+            username: { prefijos: ["Shadow", "Cyber", "Zero", "Pixel", "Cosmic", "Neon", "Quantum", "Void", "Glitch", "Echo"], sufijos: ["Hunter", "Byte", "Specter", "Warden", "Rider", "Pilot", "Neko", "Pulse", "Drifter", "Jolt"] },
+            scifi: { prefijos: ["Andro", "Cy-", "Xylo", "Zeta", "Galacto", "Nebul", "Quasar", "Vex", "Astro", "Terra"], sufijos: ["meda", "nix", "corp", "dron", "flux", "nova", "prime", "tech", "dyne", "sphere"] }
         };
 
         generateBtn.addEventListener('click', generateNames);
@@ -104,40 +97,26 @@
         function generateNames() {
             const category = categorySelect.value;
             const { prefijos, sufijos } = nameParts[category];
-            
-            resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
-            
-            const generatedNames = new Set(); // Para evitar nombres repetidos
+            resultsDiv.innerHTML = ''; 
+            const generatedNames = new Set();
             while(generatedNames.size < 8) {
                 const prefijo = prefijos[Math.floor(Math.random() * prefijos.length)];
                 const sufijo = sufijos[Math.floor(Math.random() * sufijos.length)];
                 let name = '';
-
-                if (category === 'business') {
-                    name = prefijo + sufijo;
-                } else if (category === 'username') {
+                if (category === 'business') { name = prefijo + sufijo; }
+                else if (category === 'username') {
                     const separator = ["", "_", ""][Math.floor(Math.random() * 3)];
                     const number = Math.floor(Math.random() * 99);
                     name = `${prefijo}${separator}${sufijo}${number}`;
-                } else {
-                    name = prefijo + sufijo;
-                }
+                } else { name = prefijo + sufijo; }
                 generatedNames.add(name);
             }
-
             generatedNames.forEach(name => {
                 const nameDiv = document.createElement('div');
                 nameDiv.className = 'result-item flex items-center justify-between p-3 rounded-lg fade-in mb-2';
-                nameDiv.innerHTML = `
-                    <span class="text-lg text-gray-200">${name}</span>
-                    <button class="copy-btn text-gray-400 hover:text-white" data-name="${name}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                    </button>
-                `;
+                nameDiv.innerHTML = `<span class="text-lg text-gray-200">${name}</span><button class="copy-btn text-gray-400 hover:text-white" data-name="${name}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>`;
                 resultsDiv.appendChild(nameDiv);
             });
-            
-            // Añadir funcionalidad de copiado a los nuevos botones
             document.querySelectorAll('.copy-btn').forEach(button => {
                 button.addEventListener('click', () => {
                     const nameToCopy = button.getAttribute('data-name');
@@ -153,16 +132,11 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-
             const originalIcon = button.innerHTML;
             button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
-            setTimeout(() => {
-                button.innerHTML = originalIcon;
-            }, 1500);
+            setTimeout(() => { button.innerHTML = originalIcon; }, 1500);
         }
-
     </script>
 </body>
 </html>
-
 
